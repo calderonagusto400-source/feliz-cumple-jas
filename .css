@@ -1,0 +1,27 @@
+/* Pantallas grandes (1600px+) */
+.carousel-container { height: 600px; max-width: 900px; }
+
+/* Laptops (1200px) */
+@media (max-width: 1200px) {
+  .carousel-container { height: 550px; max-width: 850px; }
+}
+
+/* Tablets grandes (992px) */
+@media (max-width: 992px) {
+  .carousel-container { height: 450px; max-width: 650px; }
+}
+
+/* Tablets (768px) */
+@media (max-width: 768px) {
+  .carousel-container { height: 400px; max-width: 550px; }
+}
+
+/* Teléfonos (576px) */
+@media (max-width: 576px) {
+  .carousel-container { height: 350px; max-width: 100%; }
+}
+
+/* Teléfonos pequeños (400px) */
+@media (max-width: 400px) {
+  .carousel-container { height: 300px; }
+}

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños JAS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(135deg, #1a2980, #26d0ce, #8e2de2, #4a00e0);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            padding: 25px;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 15px;
+        }
+
+        .header {
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.8rem;
+            color: #ffde59;
+            margin-bottom: 20px;
+            text-shadow: 0 0 12px rgba(255, 0, 0, 0.7);
+            letter-spacing: 1px;
+            padding: 0 10px;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #fff;
+            max-width: 800px;
+            margin: 0 auto 25px;
+            line-height: 1.7;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 18px;
+            border-radius: 14px;
+            border-left: 4px solid #ff6bb5;
+        }
+
+        .birthday-message {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.2rem;
+            font-weight: bold;
+            color: #ffde59;
+            margin: 25px auto;
+            text-shadow: 0 0 12px rgba(255, 0, 0, 0.7);
+            animation: pulse 1.5s infinite, glow 2s infinite alternate;
+            position: relative;
+            padding: 18px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 14px;
+            max-width: 850px;
+        }
+
+        .heart {
+            color: #ff6b6b;
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Carrusel optimizado para alta resolución */
+        .carousel-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 14px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            height: 600px; /* Mayor altura para mostrar más detalle */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+            height: 100%;
+            width: 100%;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Muestra toda la imagen sin recortar */
+            object-position: center center;
+            transition: transform 0.5s ease;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-item:hover .carousel-img {
+            transform: scale(1.03);
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+            gap: 15px;
+        }
+
+        .control-btn {
+            background: rgba(255, 222, 89, 0.8);
+            color: #8e2de2;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 222, 89, 1);
+            transform: translateY(-4px) scale(1.1);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+        }
+
+        .indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .indicator {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #ffde59;
+            transform: scale(1.4);
+            box-shadow: 0 0 8px #ffde59;
+        }
+
+        .quote {
+            max-width: 800px;
+            margin: 35px auto 15px;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 14px;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 3.2rem;
+            color: #ffde59;
+            opacity: 0.5;
+            position: absolute;
+        }
+
+        .quote::before {
+            top: 10px;
+            left: 15px;
+        }
+
+        .quote::after {
+            bottom: -20px;
+            right: 15px;
+        }
+
+        .footer {
+            margin-top: 25px;
+            padding: 20px;
+            font-size: 1.1rem;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 14px;
+            font-style: italic;
+        }
+        
+        .music-control {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .music-control:hover {
+            background: rgba(255, 222, 89, 0.5);
+            transform: scale(1.1);
+        }
+
+        .audio-info {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            animation: fadeInOut 3s infinite;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 12px rgba(255, 0, 0, 0.7), 0 0 18px rgba(255, 222, 89, 0.8); }
+            to { text-shadow: 0 0 22px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 222, 89, 1); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1.2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Floating hearts */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .heart-floating {
+            position: absolute;
+            color: rgba(255, 107, 107, 0.7);
+            font-size: 20px;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-80px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Confetti container */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        /* Responsive Design para todos los dispositivos */
+        @media (max-width: 1600px) {
+            .carousel-container {
+                height: 550px;
+                max-width: 850px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 95%;
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .birthday-message {
+                font-size: 2.8rem;
+            }
+            
+            .carousel-container {
+                height: 500px;
+                max-width: 750px;
+            }
+            
+            .quote {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 992px) { /* Tablets grandes */
+            .carousel-container {
+                height: 450px;
+                max-width: 650px;
+            }
+            
+            h1 {
+                font-size: 3.0rem;
+            }
+            
+            .birthday-message {
+                font-size: 2.4rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+                padding: 16px;
+            }
+            
+            .quote {
+                font-size: 1.2rem;
+                padding: 22px;
+            }
+        }
+
+        @media (max-width: 768px) { /* Tabletas */
+            .container {
+                padding: 20px 15px;
+                margin: 12px;
+            }
+            
+            .header {
+                padding: 15px 10px;
+            }
+            
+            .carousel-container {
+                height: 400px;
+                max-width: 550px;
+                margin: 0 auto;
+            }
+            
+            h1 {
+                font-size: 2.6rem;
+            }
+            
+            .birthday-message {
+                font-size: 2.1rem;
+            }
+            
+            .control-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.4rem;
+            }
+            
+            .quote {
+                font-size: 1.1rem;
+                margin: 30px auto 15px;
+            }
+            
+            .footer {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 576px) { /* Teléfonos */
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 15px 10px;
+                margin: 10px;
+                border-radius: 14px;
+            }
+            
+            h1 {
+                font-size: 2.4rem;
+                margin-bottom: 15px;
+                padding: 0 8px;
+            }
+            
+            .birthday-message {
+                font-size: 1.9rem;
+                padding: 15px 8px;
+                margin: 20px auto;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+                padding: 15px 10px;
+                margin-bottom: 20px;
+            }
+            
+            .carousel-container {
+                height: 350px;
+                max-width: 100%;
+                margin: 0 5px;
+                border-radius: 10px;
+            }
+            
+            .control-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .quote {
+                font-size: 1.05rem;
+                padding: 18px 10px;
+                margin: 25px auto 10px;
+            }
+            
+            .quote::before, .quote::after {
+                font-size: 2.2rem;
+            }
+            
+            .footer {
+                font-size: 0.95rem;
+                padding: 15px;
+                margin-top: 15px;
+            }
+            
+            .music-control {
+                top: 10px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.0rem;
+            }
+            
+            .indicators {
+                gap: 8px;
+            }
+            
+            .indicator {
+                width: 12px;
+                height: 12px;
+            }
+        }
+
+        @media (max-width: 400px) { /* Teléfonos pequeños */
+            h1 {
+                font-size: 2.1rem;
+            }
+            
+            .birthday-message {
+                font-size: 1.7rem;
+            }
+            
+            .carousel-container {
+                height: 300px;
+            }
+            
+            .subtitle {
+                font-size: 1.0rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Confetti canvas -->
+    <canvas id="confetti-canvas"></canvas>
+    
+    <!-- Floating hearts container -->
+    <div class="hearts-container" id="hearts-container"></div>
+    
+    <!-- Controles de música -->
+    <div class="music-control" id="music-control">
+        <i class="fas fa-volume-up"></i>
+    </div>
+    
+    <!-- Elementos de audio - Rutas locales -->
+    <audio id="intro-sound" src="assets/audio/intro.mp3"></audio>
+    <audio id="background-music" loop src="assets/audio/background.mp3"></audio>
+    
+    <div class="container fade-in">
+        <div class="header">
+            <h1>Feliz Cumpleaños JAS <i class="fas fa-birthday-cake"></i></h1>
+            <p class="subtitle">Hola Mi Amor, no va a creer pero estaba tan nervioso por llegar este día, quería que sintiera lo que yo sentí cuando celebré mi cumpleaños. Espero en este Día cambie una perspectiva que tenía.... Bueno mucha charla verdad.</p>
+            <div class="birthday-message">FEEEELIZ CUMPLEAÑOS MI AMOR <i class="fas fa-heart"></i></div>
+        </div>
+        
+        <div class="carousel-container">
+            <div class="carousel" id="image-carousel">
+                <!-- Las imágenes se generarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+        
+        <div class="carousel-controls">
+            <button class="control-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="control-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+        <div class="indicators" id="indicators-container">
+            <!-- Los indicadores se generarán con JavaScript -->
+        </div>
+        
+        <div class="quote">
+            DESEO EN DIOSITO QUE CUMPLA MUCHO AÑOS MÁS Y PUEDA PERMITIRME ESTAR Y CELEBRARLO CON USTED. LE DOY UN BESOTE LA AMO INFINITAMENTE MI AMOR.
+        </div>
+        
+        <div class="footer">
+            <p>Creado para una MUJER TAN MARAVILLOSA Y HERMOSA 🐻 ATT MAR</p>
+            <div class="audio-info">🎵 Reproduciendo música automáticamente</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.getElementById('image-carousel');
+            const indicatorsContainer = document.getElementById('indicators-container');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            const birthdayMessage = document.querySelector('.birthday-message');
+            const musicControl = document.getElementById('music-control');
+            const introSound = document.getElementById('intro-sound');
+            const backgroundMusic = document.getElementById('background-music');
+            const audioInfo = document.querySelector('.audio-info');
+            
+            // Configuración
+            const totalPhotos = 28; // 28 fotos
+            let currentIndex = 0;
+            let musicPlaying = false;
+            let soundsStarted = true; // Iniciado automáticamente
+            let isIntroPlaying = false;
+            
+            // Generar carrusel e indicadores
+            for (let i = 1; i <= totalPhotos; i++) {
+                // Crear elemento de carrusel
+                const carouselItem = document.createElement('div');
+                carouselItem.className = 'carousel-item';
+                
+                const img = document.createElement('img');
+                // Rutas locales para las fotos (1600x1600)
+                img.src = `assets/images/foto${i}.jpg`;
+                img.alt = `Foto ${i}`;
+                img.className = 'carousel-img';
+                img.style.objectPosition = 'center center';
+                
+                carouselItem.appendChild(img);
+                carousel.appendChild(carouselItem);
+                
+                // Crear indicador
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator';
+                if (i === 1) indicator.classList.add('active');
+                indicator.dataset.index = i - 1;
+                indicatorsContainer.appendChild(indicator);
+            }
+            
+            const items = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            // Actualizar carrusel
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Actualizar indicadores
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Siguiente slide
+            nextBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % totalPhotos;
+                updateCarousel();
+                createHearts(10);
+            });
+            
+            // Slide anterior
+            prevBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + totalPhotos) % totalPhotos;
+                updateCarousel();
+                createHearts(10);
+            });
+            
+            // Navegación por indicadores
+            indicators.forEach((indicator) => {
+                indicator.addEventListener('click', function() {
+                    currentIndex = parseInt(this.dataset.index);
+                    updateCarousel();
+                    createHearts(10);
+                });
+            });
+            
+            // Autoplay del carrusel
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalPhotos;
+                updateCarousel();
+                if(currentIndex % 4 === 0) createHearts(5);
+            }, 5000);
+            
+            // Reproducir sonido inicial de 49 segundos
+            function playIntroSound() {
+                introSound.play().catch(e => {
+                    console.log("Reproducción automática bloqueada: ", e);
+                    audioInfo.innerHTML = "🎵 Haz clic en el botón de música para iniciar";
+                });
+                isIntroPlaying = true;
+                musicControl.innerHTML = '<i class="fas fa-volume-up"></i>';
+                
+                // Después de 49 segundos, comenzar música de fondo
+                setTimeout(() => {
+                    backgroundMusic.play();
+                    musicPlaying = true;
+                    isIntroPlaying = false;
+                }, 49000); // 49 segundos
+            }
+            
+            // Control de música
+            musicControl.addEventListener('click', function() {
+                if (!soundsStarted) {
+                    // Primera vez: iniciar sonidos
+                    playIntroSound();
+                    soundsStarted = true;
+                } else if (!isIntroPlaying) {
+                    // Solo permitir alternar si el intro no se está reproduciendo
+                    if(musicPlaying) {
+                        backgroundMusic.pause();
+                        musicControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                        musicPlaying = false;
+                    } else {
+                        backgroundMusic.play();
+                        musicControl.innerHTML = '<i class="fas fa-volume-up"></i>';
+                        musicPlaying = true;
+                    }
+                }
+            });
+            
+            // Efecto de carga
+            setTimeout(() => {
+                document.querySelector('.container').classList.add('fade-in');
+                createHearts(30);
+                startConfetti();
+                
+                // Iniciar música automáticamente
+                playIntroSound();
+            }, 100);
+            
+            // Animación para el mensaje de cumpleaños
+            setInterval(() => {
+                birthdayMessage.style.animation = 'none';
+                setTimeout(() => {
+                    birthdayMessage.style.animation = 'pulse 1.5s infinite, glow 2s infinite alternate';
+                }, 10);
+            }, 5000);
+            
+            // Crear corazones flotantes
+            function createHearts(count) {
+                const container = document.getElementById('hearts-container');
+                for (let i = 0; i < count; i++) {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '❤️';
+                    heart.classList.add('heart-floating');
+                    
+                    // Posición aleatoria
+                    const leftPos = Math.random() * 100;
+                    heart.style.left = `${leftPos}%`;
+                    
+                    // Tamaño aleatorio
+                    const size = Math.random() * 30 + 15;
+                    heart.style.fontSize = `${size}px`;
+                    
+                    // Duración y retraso aleatorios
+                    const duration = Math.random() * 5 + 5;
+                    const delay = Math.random() * 5;
+                    heart.style.animationDuration = `${duration}s`;
+                    heart.style.animationDelay = `${delay}s`;
+                    
+                    container.appendChild(heart);
+                    
+                    // Eliminar después de la animación
+                    setTimeout(() => {
+                        heart.remove();
+                    }, duration * 1000);
+                }
+            }
+            
+            // Confeti
+            function startConfetti() {
+                const canvas = document.getElementById('confetti-canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                
+                const confetti = [];
+                const confettiCount = 200; // Más confeti para celebrar
+                const colors = ['#ffde59', '#ff6bb5', '#4a00e0', '#8e2de2', '#26d0ce', '#ffffff'];
+                
+                for (let i = 0; i < confettiCount; i++) {
+                    confetti.push({
+                        x: Math.random() * canvas.width,
+                        y: -20,
+                        width: Math.random() * 20 + 8,
+                        height: Math.random() * 20 + 8,
+                        speed: Math.random() * 4 + 3,
+                        rotation: Math.random() * 360,
+                        rotationSpeed: Math.random() * 15 - 7.5,
+                        color: colors[Math.floor(Math.random() * colors.length)]
+                    });
+                }
+                
+                function drawConfetti() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    
+                    confetti.forEach(conf => {
+                        ctx.save();
+                        ctx.translate(conf.x + conf.width/2, conf.y + conf.height/2);
+                        ctx.rotate(conf.rotation * Math.PI/180);
+                        ctx.fillStyle = conf.color;
+                        ctx.fillRect(-conf.width/2, -conf.height/2, conf.width, conf.height);
+                        ctx.restore();
+                        
+                        // Actualizar posición
+                        conf.y += conf.speed;
+                        conf.rotation += conf.rotationSpeed;
+                        
+                        // Resetear si sale de la pantalla
+                        if (conf.y > canvas.height) {
+                            conf.y = -20;
+                            conf.x = Math.random() * canvas.width;
+                        }
+                    });
+                    
+                    requestAnimationFrame(drawConfetti);
+                }
+                
+                drawConfetti();
+                
+                // Redimensionar canvas al cambiar tamaño de ventana
+                window.addEventListener('resize', () => {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
